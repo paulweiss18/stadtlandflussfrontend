@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import CreateLobby from "./components/CreateLobby";
+import JoinLobby from "./components/JoinLobby";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from "react-router-dom";
+import Startpage from "./components/Startpage";
+import Lobby from "./components/Lobby";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+          <Router>
+              <div class="container-main">
+                  <Switch>
+                      <Route path="/" exact component={Startpage}></Route>
+                      <Route path="/Startpage" component={Startpage}></Route>
+                      <Route path="/CreateLobby" component={CreateLobby}></Route>
+                      <Route path="/JoinLobby" component={JoinLobby}></Route>
+                      <Route path="/Lobby" component={Lobby}></Route>
+                  </Switch>
+              </div>
+          </Router>
+      </div>
   );
 }
 

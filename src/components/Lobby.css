@@ -40,19 +40,6 @@ html{
     font-size: 32px;
     color: black;
 }
-.input{
-    width: 98%;
-    height: 60px;
-    font-size: 32px;
-    margin: 1% auto 1% auto;
-    text-align: center;
-    font-family: 'Chango', serif;
-    font-style: normal;
-    font-weight: normal;
-    background: rgba(255, 175, 56, 0.8);
-    border: 7px solid #000000;
-    border-radius: 45px;
-}
 #title1{
     font-size: 20px;
 }

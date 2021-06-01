@@ -8,9 +8,6 @@ html{
     width: 50%;
     height: 100%;
 }
-.p{
-    text-decoration: none;
-}
 .container{
     margin: 5% auto 5% auto;
     text-align: center;
@@ -20,6 +17,7 @@ html{
     background: #FFAF36;
     border: 7px solid #000000;
     border-radius: 45px;
+    cursor: pointer;
 }
 .container2{
     margin: 5% auto 5% auto;
@@ -30,13 +28,9 @@ html{
     background: #FFAF36;
     border: 7px solid #000000;
     border-radius: 45px;
-}
-.container2:hover{
-    background-color: gray;
-    transition: 0.5s;
     cursor: pointer;
 }
-.btnText{
+#btnText{
     font-size: 32px;
     color: black;
 }
@@ -44,14 +38,6 @@ html{
     width: 98%;
     height: 60px;
     font-size: 32px;
-    margin: 1% auto 1% auto;
-    text-align: center;
-    font-family: 'Chango', serif;
-    font-style: normal;
-    font-weight: normal;
-    background: rgba(255, 175, 56, 0.8);
-    border: 7px solid #000000;
-    border-radius: 45px;
 }
 #title1{
     font-size: 20px;
