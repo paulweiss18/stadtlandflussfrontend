@@ -22,9 +22,10 @@ class JoinLobby extends Component{
         this.setState({ lobbycode: event.target.value});
     };
     joinLobbyFunction = (e) => {
-        const LobbyObj = LobbyService.joinLobby(this.state.username, this.state.lobbycode).then((res) => {
-            console.log(res.data);
-        });
+        let playerid = LobbyService.createPlayer(this.state.username)
+        console.log(playerid);
+        console.log(this.state.lobbycode);
+        const LobbyObj = LobbyService.joinLobby(playerid, this.state.lobbycode);
         this.props.history.push("/Lobby");
     }
 

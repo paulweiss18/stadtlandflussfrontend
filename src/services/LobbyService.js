@@ -4,15 +4,21 @@ const LOBBY_API_BASE_URL = "http://localhost:8090/lobby";
 
 class LobbyService {
 
-    createLobby(username){
-        return axios.post(LOBBY_API_BASE_URL + '/createLobby',{
+    createPlayer(username){
+        return axios.post(LOBBY_API_BASE_URL + '/createPlayer', {
             name: username
+        });
+    }
+
+    createLobby(playerid){
+        return axios.post(LOBBY_API_BASE_URL + '/createLobby',{
+            playerid: playerid
         });
     }
     joinLobby(username, lobbycode){
         return axios.post(LOBBY_API_BASE_URL + '/joinLobby',{
-            name: username,
-            code: lobbycode
+            playerId: username,
+            lobbyCode: lobbycode
         });
     }
 }

@@ -4,6 +4,7 @@ import {
     BrowserRouter as Router
 } from "react-router-dom";
 import LobbyService from "../services/LobbyService";
+import Lobby from "./Lobby";
 
 class CreateLobby extends Component{
 
@@ -18,9 +19,18 @@ class CreateLobby extends Component{
     };
 
     createLobbyFunction = (e) => {
-        const LobbyObj = LobbyService.createLobby(this.state.username).then((res) => {
-            this.props.history.push(LobbyObj);
-        });
+        let playerid = LobbyService.createPlayer(this.state.username);
+        console.log(playerid);
+
+        //setCookie() => {
+        //    let d = new Date();
+        //    d.setTime(d.getTime() + (minute*60*1000000));
+        //
+        //    cookie.set('playerid', true, {path: "/", expires: d});
+        //};
+
+        const LobbyObj = LobbyService.createLobby(playerid);
+        console.log(LobbyObj);
         this.props.history.push("/Lobby");
     }
     render(){
