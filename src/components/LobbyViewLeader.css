@@ -1,0 +1,48 @@
+html{
+    background-image: url("/src/components/Backgroundx4.png");
+}
+.main{
+    margin: auto;
+    padding: 120px;
+    text-align: center;
+    width: 50%;
+    height: 100%;
+}
+.p{
+    text-decoration: none;
+}
+.container{
+    margin: 5% auto 5% auto;
+    text-align: center;
+    font-family: 'Chango', serif;
+    font-style: normal;
+    font-weight: normal;
+    background: #FFAF36;
+    border: 7px solid #000000;
+    border-radius: 45px;
+}
+.container2{
+    margin: 5% auto 5% auto;
+    text-align: center;
+    font-family: 'Chango', serif;
+    font-style: normal;
+    font-weight: normal;
+    background: #FFAF36;
+    border: 7px solid #000000;
+    border-radius: 45px;
+}
+.container2:hover{
+    background-color: gray;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.btnText{
+    font-size: 32px;
+    color: black;
+}
+#title1{
+    font-size: 20px;
+}
+#title2{
+    font-size: 40px;
+}

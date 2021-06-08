@@ -15,18 +15,26 @@ class JoinLobby extends Component{
         };
         this.joinLobbyFunction = this.joinLobbyFunction.bind(this);
     }
+
+
     handleChange = event => {
         this.setState({ username: event.target.value});
     };
+
+
     handleChange2 = event => {
         this.setState({ lobbycode: event.target.value});
     };
+
+
     joinLobbyFunction = (e) => {
-        let playerid = LobbyService.createPlayer(this.state.username)
-        console.log(playerid);
-        console.log(this.state.lobbycode);
-        const LobbyObj = LobbyService.joinLobby(playerid, this.state.lobbycode);
-        this.props.history.push("/Lobby");
+        window.sessionStorage.removeItem('playerId')
+        window.sessionStorage.removeItem('lobbyCode')
+
+        this.props.history.push("/Lobby", {
+            username: this.state.username,
+            lobbyCode: this.state.lobbycode
+        });
     }
 
     render(){

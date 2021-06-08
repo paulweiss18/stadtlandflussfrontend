@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import Startpage from "./components/Startpage";
 import Lobby from "./components/Lobby";
+import LobbyViewLeader from "./components/LobbyViewLeader";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
                       <Route path="/CreateLobby" component={CreateLobby}></Route>
                       <Route path="/JoinLobby" component={JoinLobby}></Route>
                       <Route path="/Lobby" component={Lobby}></Route>
+                      <Route path="/LobbyViewLeader" component={LobbyViewLeader}></Route>
                   </Switch>
               </div>
           </Router>

@@ -12,13 +12,20 @@ class LobbyService {
 
     createLobby(playerid){
         return axios.post(LOBBY_API_BASE_URL + '/createLobby',{
-            playerid: playerid
+            playerId: playerid
         });
     }
-    joinLobby(username, lobbycode){
+
+    joinLobby(playerid, lobbycode){
         return axios.post(LOBBY_API_BASE_URL + '/joinLobby',{
-            playerId: username,
+            playerId: playerid,
             lobbyCode: lobbycode
+        });
+    }
+
+    getLobby(lobbycode){
+        return axios.post(LOBBY_API_BASE_URL + '/getLobby',{
+            code: lobbycode
         });
     }
 }
