@@ -8,6 +8,8 @@ import LobbyService from "../services/LobbyService";
 
 
 
+
+
 class Lobby extends Component{
 
     constructor(props){
@@ -31,7 +33,12 @@ class Lobby extends Component{
                 this.setState({
                     playerId: res.data.userid
                 })
+
                 window.sessionStorage.setItem('playerId', res.data.userid);
+
+
+
+
                 LobbyService.joinLobby(res.data.userid, this.props.history.location.state.lobbyCode).then( (res) => {
                     this.setState({
                         lobbyObj: res.data

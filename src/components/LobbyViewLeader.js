@@ -23,8 +23,6 @@ class LobbyViewLeader extends Component{
 
     componentDidMount() {
 
-
-
         if (window.sessionStorage.getItem('playerId') == null || window.sessionStorage.getItem('lobbyCode') == null) {
             LobbyService.createPlayer(this.props.history.location.state.username).then((res) => {
                 this.setState({
@@ -38,9 +36,10 @@ class LobbyViewLeader extends Component{
                     window.sessionStorage.setItem('lobbyCode', res.data.lobbyCode);
                 });
             });
+
+
         } else {
             this.setState({playerId: window.sessionStorage.getItem('playerId')});
-            console.log(window.sessionStorage.getItem('lobbyCode'));
             LobbyService.getLobby(window.sessionStorage.getItem('lobbyCode')).then((res) => {
                 this.setState({
                     lobbyObj: res.data
