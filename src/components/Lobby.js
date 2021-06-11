@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './Lobby.css'
+import './Lobby.css';
 import {
     BrowserRouter as Router
 } from "react-router-dom";
@@ -21,8 +21,6 @@ class Lobby extends Component{
         };
 
     }
-
-
 
     componentDidMount() {
 
@@ -49,9 +47,6 @@ class Lobby extends Component{
                     lobbyObj: res.data}
                 )});
         }
-
-
-
     }
 
 
@@ -63,21 +58,39 @@ class Lobby extends Component{
 
 
             return (
-                <Router>
-                    <div className="main">
-                        <div className="container">
-                            <p id="title1">Stadt - Land - Fluss</p>
-                            <p id="title2">Lobby</p>
+                <div className="main-lobby">
+                    <div className="container-lobby-header">
+                        <p id="title1">Stadt - Land - Fluss</p>
+                        <p id="title2">Lobby</p>
+                    </div>
+                    <p className="header-cat">Lobby Code</p>
+                    <div className="container-code">
+                        <p>{this.state.lobbyObj.lobbyCode}</p>
+                    </div>
+                    <div className="config">
+                        <p className="header-cat">Excluded Letters</p>
+                        <div className="container-cat">
+                            <p>{this.state.lobbyObj.gameConfiguration.excludedLetters}</p>
                         </div>
-                        <div className="container">
-                            <p>{this.state.lobbyObj.lobbyCode}</p>
+                        <p className="header-cat">Categories</p>
+                        <div className="container-cat">
+                            <p>{this.state.lobbyObj.gameConfiguration.categories}</p>
                         </div>
-                        <div className="container">
+                        <p className="header-cat">Number of Rounds</p>
+                        <div className="container-cat">
+                            <p>{this.state.lobbyObj.gameConfiguration.numberOfRounds}</p>
+                        </div>
+                    </div>
+                    <div className="players">
+                        <p className="header-cat">Players</p>
+                        <div className="container-lobby-players">
                             {list}
                         </div>
-                        <p className="btnText">Waiting for Lobby Leader to Start Game</p>
                     </div>
-                </Router>
+                    <div className="container4">
+                        <p className="btnText">Waiting for Lobby Leader ...</p>
+                    </div>
+                </div>
             );
         }else{
             return (<p>Error</p>)

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './Lobby.css'
+import './LobbyViewLeader.css';
 import LobbyService from "../services/LobbyService";
 
 
@@ -65,20 +65,31 @@ class LobbyViewLeader extends Component{
             const list = (this.state.lobbyObj.players).map((p) => <p key={p.userid}>{p.username}</p>);
 
             return (
-                <div className="main">
-                    <div className="container">
+                <div className="main-lobby">
+                    <div className="container-lobby-header">
                         <p id="title1">Stadt - Land - Fluss</p>
                         <p id="title2">Lobby Configuration</p>
                     </div>
-                    <div className="container">
+                    <p className="header-cat">Lobby Code</p>
+                    <div className="container-code">
                         <p>{this.state.lobbyObj.lobbyCode}</p>
                     </div>
-
-                    <div className="container">
-                        {list}
+                    <div className="config">
+                        <p className="header-cat">Excluded Letters</p>
+                        <input className="container-cat" placeholder={this.state.lobbyObj.gameConfiguration.excludedLetters}/>
+                        <p className="header-cat">Categories</p>
+                        <input className="container-cat" placeholder={this.state.lobbyObj.gameConfiguration.categories}/>
+                        <p className="header-cat">Number of Rounds</p>
+                        <input className="container-cat" placeholder={this.state.lobbyObj.gameConfiguration.numberOfRounds}/>
+                        <button className="save-config">Save Configuration</button>
                     </div>
-
-                    <div className="container2" onClick={() => {
+                    <div className="players">
+                        <p className="header-cat">Players</p>
+                        <div className="container-lobby-players">
+                            {list}
+                        </div>
+                    </div>
+                    <div className="container3" onClick={() => {
                         this.startGame()
                     }}>
                         <p className="btnText">Start Game</p>
