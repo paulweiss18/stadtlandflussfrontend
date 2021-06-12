@@ -8,6 +8,13 @@ html{
     width: 50%;
     height: 100%;
 }
+.main-lobby{
+    margin: auto;
+    padding: 20px;
+    width: 95%;
+    height: 100%;
+    overflow: hidden;
+}
 .p{
     text-decoration: none;
 }
@@ -19,7 +26,7 @@ html{
     font-weight: normal;
     background: #FFAF36;
     border: 7px solid #000000;
-    border-radius: 45px;
+    border-radius: 20px;
 }
 .container2{
     margin: 5% auto 5% auto;
@@ -29,12 +36,64 @@ html{
     font-weight: normal;
     background: #FFAF36;
     border: 7px solid #000000;
-    border-radius: 45px;
+    border-radius: 20px;
+}
+.container4{
+    margin: 25% auto 0% auto;
+    text-align: center;
+    font-family: 'Chango', serif;
+    font-style: normal;
+    font-weight: normal;
+    background: #FFAF36;
+    border: 7px solid #000000;
+    border-radius: 20px;
 }
 .container2:hover{
     background-color: gray;
     transition: 0.5s;
     cursor: pointer;
+}
+.container-code{
+    margin-top: 1%;
+    text-align: center;
+    font-family: 'Chango', serif;
+    font-style: normal;
+    font-weight: normal;
+    background: #FFAF36;
+    border: 7px solid #000000;
+    border-radius: 20px;
+}
+.container-lobby-header{
+    text-align: center;
+    font-family: 'Chango', serif;
+    font-style: normal;
+    font-weight: normal;
+    background: #FFAF36;
+    border: 7px solid #000000;
+    border-radius: 20px;
+}
+.container-lobby-players{
+    width: 95%;
+    float : left;
+    display: inline-block;
+    text-align: center;
+    font-family: 'Chango', serif;
+    font-style: normal;
+    font-weight: normal;
+    background: lightgray;
+    border: 5px solid #000000;
+    border-radius: 20px;
+}
+.container-cat{
+    margin: 1% 0% 1% 0%;
+    width: 95%;
+    padding-left: 1%;
+    font-family: 'Chango', serif;
+    font-style: normal;
+    font-weight: normal;
+    background: lightgray;
+    border: 5px solid #000000;
+    border-radius: 20px;
 }
 .btnText{
     font-size: 32px;
@@ -45,4 +104,24 @@ html{
 }
 #title2{
     font-size: 40px;
+}
+.header-cat{
+    font-family: 'Chango', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+}
+.config{
+    margin-top: 2%;
+    width: 79%;
+    float : left;
+    display: inline-block;
+    overflow: hidden;
+}
+.players{
+    margin-top: 2%;
+    width: 20%;
+    float : left;
+    display: inline-block;
+    overflow: hidden;
 }
