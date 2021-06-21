@@ -1,9 +1,12 @@
 import React, {Component, useEffect, useState} from 'react';
 import './CreateLobby.css';
 import LobbyService from "../services/LobbyService";
+import {CustomWebsocket} from "../context/CustomWebsocket";
 
 
 class CreateLobby extends React.Component{
+
+    websocket: CustomWebsocket
 
     state = {
         username: ''
@@ -15,9 +18,15 @@ class CreateLobby extends React.Component{
     }
 
     createLobbyFunction = (e) => {
-        window.sessionStorage.removeItem('playerId');
         window.sessionStorage.removeItem('lobbyCode');
-        this.props.history.push("/LobbyViewLeader", {username: this.state.username});
+
+        LobbyService.createPlayer(this.state.username).then((res) => {
+            window.sessionStorage.setItem('playerId', res.data.userid);
+
+            window.sessionStorage.setItem('websocket',this.websocket);
+            this.props.history.push("/LobbyViewLeader", {username: this.state.username,
+                                                         playerId: res.data.userid});
+        });
     }
 
 

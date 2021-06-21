@@ -4,13 +4,12 @@ import {
     BrowserRouter as Router
 } from "react-router-dom";
 import LobbyService from "../services/LobbyService";
-
-
-
-
+import {CustomWebsocket} from "../context/CustomWebsocket";
 
 
 class Lobby extends Component{
+
+    websocket: CustomWebsocket;
 
     constructor(props){
         super(props);
@@ -22,32 +21,25 @@ class Lobby extends Component{
             playerId: ''
         };
 
+        this.handleMessageWebsocket = this.handleMessageWebsocket.bind(this);
+
+        this.websocket = new CustomWebsocket(this.props.history.location.state.playerId);
+        this.websocket.onReceiveMessage = this.handleMessageWebsocket.bind(this);
+
+        window.addEventListener('beforeunload', ()=>this.websocket.disconnect());
     }
 
+
     componentDidMount() {
-
-        if(window.sessionStorage.getItem('playerId') == null || window.sessionStorage.getItem('lobbyCode') == null){
-            LobbyService.createPlayer(this.props.history.location.state.username).then( (res) => {
-                this.setState({
-                    playerId: res.data.userid
-                })
-
-                window.sessionStorage.setItem('playerId', res.data.userid);
-
-
-
-
-                LobbyService.joinLobby(res.data.userid, this.props.history.location.state.lobbyCode).then( (res) => {
+        if(window.sessionStorage.getItem('lobbyCode') == null){
+            LobbyService.joinLobby(this.props.history.location.state.playerId, this.props.history.location.state.lobbyCode).then( (res) => {
                     this.setState({
                         lobbyObj: res.data
                     })
                     window.sessionStorage.setItem('lobbyCode', res.data.lobbyCode);
-                });
             });
 
         }else{
-            this.setState({playerId: window.sessionStorage.getItem('playerId')})
-
             LobbyService.getLobby(window.sessionStorage.getItem('lobbyCode'))
                 .then((res) => {
                 this.setState({
@@ -56,13 +48,29 @@ class Lobby extends Component{
         }
     }
 
+    handleMessageWebsocket = (e) => {
+
+        let data = JSON.parse(e.data)
+
+        if(data.type === 'updateLobby'){
+            this.setState({
+                lobbyObj: data.data
+            })
+        }else if(data.type === 'startGame'){
+            this.props.history.push('/Playground', {
+                round: data.data
+            })
+        }
+    }
+
 
     render() {
+
+
 
         if (this.state.lobbyObj) {
 
             const list = (this.state.lobbyObj.players).map((p) => <p key={p.userid}>{p.username}</p>);
-
 
             return (
                 <div className="main-lobby">
@@ -77,11 +85,11 @@ class Lobby extends Component{
                     <div className="config">
                         <p className="header-cat">Excluded Letters</p>
                         <div className="container-cat">
-                            <p>{this.state.lobbyObj.gameConfiguration.excludedLetters}</p>
+                            <p>{this.state.lobbyObj.gameConfiguration.excludedLetters.toString()}</p>
                         </div>
                         <p className="header-cat">Categories</p>
                         <div className="container-cat">
-                            <p>{this.state.lobbyObj.gameConfiguration.categories}</p>
+                            <p>{this.state.lobbyObj.gameConfiguration.categories.toString()}</p>
                         </div>
                         <p className="header-cat">Number of Rounds</p>
                         <div className="container-cat">
@@ -100,7 +108,7 @@ class Lobby extends Component{
                 </div>
             );
         }else{
-            return (<p>Error</p>)
+            return (<p></p>)
         }
     }
 }

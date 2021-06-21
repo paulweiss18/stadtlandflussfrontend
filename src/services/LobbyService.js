@@ -28,6 +28,17 @@ class LobbyService {
             code: lobbycode
         });
     }
+
+    saveGameConfiguration(playerId, lobbyCode, numberOfRounds, excludedLetters, categories){
+        return axios.post(LOBBY_API_BASE_URL + '/setConfiguration',{
+            playerId: playerId,
+            lobbyCode: lobbyCode,
+            numberOfRounds: numberOfRounds.toString(),
+            excludedLetters: excludedLetters,
+            categories: categories
+        });
+    }
+
 }
 
 export default new LobbyService()

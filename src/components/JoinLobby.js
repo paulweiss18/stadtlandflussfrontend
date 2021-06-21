@@ -4,6 +4,7 @@ import {
     BrowserRouter as Router
 } from "react-router-dom";
 import LobbyService from "../services/LobbyService";
+import {CustomWebsocket} from "../context/CustomWebsocket";
 
 class JoinLobby extends Component{
 
@@ -28,13 +29,20 @@ class JoinLobby extends Component{
 
 
     joinLobbyFunction = (e) => {
-        window.sessionStorage.removeItem('playerId')
         window.sessionStorage.removeItem('lobbyCode')
 
-        this.props.history.push("/Lobby", {
-            username: this.state.username,
-            lobbyCode: this.state.lobbycode
+        LobbyService.createPlayer(this.state.username).then((res) => {
+
+            window.sessionStorage.setItem('playerId', res.data.userid);
+
+
+            this.props.history.push("/Lobby", {
+                username: this.state.username,
+                playerId: res.data.userid,
+                lobbyCode: this.state.lobbycode
+            });
         });
+
     }
 
     render(){
