@@ -10,6 +10,7 @@ import {
 import Startpage from "./components/Startpage";
 import Lobby from "./components/Lobby";
 import LobbyViewLeader from "./components/LobbyViewLeader";
+import Playground from "./components/Playground";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
                       <Route path="/JoinLobby" component={JoinLobby}></Route>
                       <Route path="/Lobby" component={Lobby}></Route>
                       <Route path="/LobbyViewLeader" component={LobbyViewLeader}></Route>
+                      <Route path="/Playground" component={Playground}></Route>
                   </Switch>
               </div>
           </Router>

@@ -69,12 +69,10 @@ class LobbyViewLeader extends Component{
             })
 
         }else if(data.type === 'startGame'){
-
-
-
-            console.log(data.data);
+            window['socket'] = this.websocket;
             this.props.history.push('/Playground', {
-                round: data.data
+                round: data.data,
+                lobbyObj: this.state.lobbyObj
             })
         }
     }
