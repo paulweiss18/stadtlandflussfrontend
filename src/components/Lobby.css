@@ -47,6 +47,7 @@ html{
     background: #FFAF36;
     border: 7px solid #000000;
     border-radius: 20px;
+    overflow: hidden;
 }
 .container2:hover{
     background-color: gray;
