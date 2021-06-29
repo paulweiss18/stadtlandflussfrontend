@@ -7,6 +7,7 @@ html{
     text-align: center;
     width: 50%;
     height: 100%;
+    overflow: hidden;
 }
 .main-game{
     margin: auto;
@@ -25,8 +26,6 @@ html{
     border: 7px solid #000000;
     border-radius: 20px;
 }
-
-
 .p{
     text-decoration: none;
 }
@@ -43,8 +42,14 @@ html{
 #category{
     font-size: 16px;
 }
-.container3{
-    margin: 25% auto 0% auto;
+.header-cat{
+    font-family: 'Chango', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+}
+.container7{
+    margin: 5% auto 0% auto;
     text-align: center;
     font-family: 'Chango', serif;
     font-style: normal;
@@ -53,11 +58,6 @@ html{
     border: 7px solid #000000;
     border-radius: 20px;
     overflow: hidden;
-}
-.container3:hover{
-    background-color: gray;
-    transition: 0.5s;
-    cursor: pointer;
 }
 .container-category{
     margin-top: 1%;
@@ -68,15 +68,22 @@ html{
     border: 7px solid #000000;
     border-radius: 20px;
     padding: 0% 1% 0% 1%;
+}
+#wrapper{
     display: flex;
-    justify-content: space-between;
+    overflow: hidden;
+}
+#left{
+    float: left;
+    width: 49.9%;
+}
+#right{
+    float: left;
+    width: 49.9%;
 }
 #player{
     text-align: left;
 }
 #answer{
-    text-align: center;
-}
-#sel-points{
     text-align: right;
 }

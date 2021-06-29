@@ -68,7 +68,7 @@ class Playground extends Component{
 
 
     render() {
-        const list = (this.state.lobbyObj.players).map((p) => <p key={p.userid}>{p.username}: {p.score}</p>);
+        const list = (this.state.lobbyObj.players.sort((a,b) => (a.score < b.score) ? 1 : ((b.score < a.score) ? -1 : 0))).map((p) => <p key={p.userid}>{p.username}: {p.score}</p>);
 
         return (
             <div className="main-game">

@@ -50,6 +50,7 @@ class VotingScreenLeader extends Component{
 
     submitPoints(){
         for (const [key, value] of this.pointMap.entries()) {
+            console.log(value);
             GameService.votePlayer(key, value.toString());
         }
         GameService.nextRound(this.state.lobbyObj.lobbyCode)
@@ -61,13 +62,19 @@ class VotingScreenLeader extends Component{
 
         const list = (this.state.lobbyObj.gameConfiguration.categories).map((c, index) =>
             <div key={c}>
-                <p>{c}</p>
+                <p className="header-cat">{c}</p>
                 <div className="container-category">
                     {(this.state.lobbyObj.players).map((p) =>
-                            <div>
-                                <p id="player">{p.username}</p>
-                                <p id="answer">{myMap.get(p.userid)[index]}</p>
-                                <select id="sel-points" onChange={e => this.handleChangePoints(e, p.userid)}><option value="0">0</option><option value="5">5</option><option value="10">10</option></select>
+                            <div id="wrapper">
+                                <div id="left2">
+                                    <p id="player">{p.username}</p>
+                                </div>
+                                <div id="middle2">
+                                    <p id="answer2">{myMap.get(p.userid)[index]}</p>
+                                </div>
+                                <div id="right2">
+                                    <select id="sel-points" onChange={e => this.handleChangePoints(e, p.userid)}><option value="0">0</option><option value="5">5</option><option value="10">10</option></select>
+                                </div>
                             </div>
                     )}
                 </div>
@@ -82,7 +89,7 @@ class VotingScreenLeader extends Component{
 
                 {list}
 
-                <div className="container3" onClick={() => {
+                <div className="container6" onClick={() => {
                     this.submitPoints()
                 }}>
                     <p className="btnText">Submit Points</p>

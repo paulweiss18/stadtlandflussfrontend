@@ -45,12 +45,16 @@ class VotingScreenPlayer extends Component{
 
         const list = (this.state.lobbyObj.gameConfiguration.categories).map((c, index) =>
             <div key={c}>
-                <p>{c}</p>
+                <p className="header-cat">{c}</p>
                 <div className="container-category">
                     {(this.state.lobbyObj.players).map((p) =>
-                        <div>
-                            <p id="player">{p.username}</p>
-                            <p id="answer">{myMap.get(p.userid)[index]}</p>
+                        <div id="wrapper">
+                            <div id="left">
+                                <p id="player">{p.username}</p>
+                            </div>
+                            <div id="right">
+                                <p id="answer">{myMap.get(p.userid)[index]}</p>
+                            </div>
                         </div>
                     )}
                 </div>
@@ -65,7 +69,7 @@ class VotingScreenPlayer extends Component{
 
                 {list}
 
-                <div className="container3">
+                <div className="container7">
                     <p className="btnText">Waiting for Lobby Leader to Submit ... </p>
                 </div>
             </div>

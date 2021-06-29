@@ -1,0 +1,39 @@
+html{
+    background-image: url("/src/components/Backgroundx4.png");
+}
+.main{
+    margin: auto;
+    padding: 120px;
+    text-align: center;
+    width: 50%;
+    height: 100%;
+}
+.container{
+    margin: 5% auto 5% auto;
+    text-align: center;
+    font-family: 'Chango', serif;
+    font-style: normal;
+    font-weight: normal;
+    background: #FFAF36;
+    border: 7px solid #000000;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.container5{
+    margin: 0% auto 0% auto;
+    text-align: center;
+    font-family: 'Chango', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    background: #FFAF36;
+    border: 7px solid #000000;
+    border-radius: 20px;
+    overflow: hidden;
+}
+#title1{
+    font-size: 20px;
+}
+#title2{
+    font-size: 40px;
+}

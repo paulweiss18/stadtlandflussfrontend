@@ -1,4 +1,3 @@
-
 html{
     background-image: url("/src/components/Backgroundx4.png");
 }
@@ -9,17 +8,6 @@ html{
     width: 50%;
     height: 100%;
 }
-
-.container-answer-header{
-    text-align: center;
-    font-family: 'Chango', serif;
-    font-style: normal;
-    font-weight: normal;
-    background: #FFAF36;
-    border: 7px solid #000000;
-    border-radius: 20px;
-}
-
 .main-game{
     margin: auto;
     padding: 20px;
@@ -43,14 +31,8 @@ html{
 #category{
     font-size: 16px;
 }
-.header-cat{
-    font-family: 'Chango', serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-}
-.container6{
-    margin: 2% auto 0% auto;
+.container3{
+    margin: 25% auto 0% auto;
     text-align: center;
     font-family: 'Chango', serif;
     font-style: normal;
@@ -60,7 +42,7 @@ html{
     border-radius: 20px;
     overflow: hidden;
 }
-.container6:hover{
+.container3:hover{
     background-color: gray;
     transition: 0.5s;
     cursor: pointer;
@@ -74,35 +56,15 @@ html{
     border: 7px solid #000000;
     border-radius: 20px;
     padding: 0% 1% 0% 1%;
-}
-#wrapper{
     display: flex;
-    overflow: hidden;
-}
-#left2{
-    float: left;
-    width: 33.2%;
-}
-#middle2{
-    float: left;
-    width: 33.2%;
-}
-#right2{
-    float: left;
-    width: 33.2%;
-    text-align: right;
+    justify-content: space-between;
 }
 #player{
     text-align: left;
 }
-#answer2{
+#answer{
     text-align: center;
 }
 #sel-points{
     text-align: right;
-    position: relative;
-    margin-top: 2.3%;
-    font-family: 'Chango', serif;
-    background: lightgray;
-    border: 2px solid #000000;
 }
