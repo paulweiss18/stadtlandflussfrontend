@@ -61,7 +61,7 @@ class VotingScreenLeader extends Component{
 
             }
 
-            this.pointMap.set(key, this.pointMap.get(key)+count);
+            this.pointMap.set(key, parseInt(this.pointMap.get(key))+count);
         }
         console.log(this.pointMap)
 
