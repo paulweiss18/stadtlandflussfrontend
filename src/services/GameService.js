@@ -11,6 +11,29 @@ class GameService{
             playerId: playerId
         });
     }
+
+    finishRound(playerId, lobbyCode, answers){
+        return axios.post(LOBBY_API_BASE_URL + '/finishRound',{
+            lobbyCode: lobbyCode,
+            playerId: playerId,
+            answers: answers
+        });
+    }
+
+    votePlayer(playerId, score){
+        return axios.post(LOBBY_API_BASE_URL + '/voteRound',{
+            playerId: playerId,
+            score: score
+        });
+    }
+
+    nextRound(lobbyCode){
+        return axios.post(LOBBY_API_BASE_URL + '/nextRound',{
+            lobbyCode: lobbyCode
+        });
+    }
+
+
 }
 
 export default new GameService();

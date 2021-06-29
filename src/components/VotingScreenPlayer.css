@@ -15,6 +15,18 @@ html{
     height: 100%;
     overflow: hidden;
 }
+
+.container-answer-header{
+    text-align: center;
+    font-family: 'Chango', serif;
+    font-style: normal;
+    font-weight: normal;
+    background: #FFAF36;
+    border: 7px solid #000000;
+    border-radius: 20px;
+}
+
+
 .p{
     text-decoration: none;
 }
@@ -28,28 +40,11 @@ html{
 #title2{
     font-size: 40px;
 }
-.category{
-    font-family: 'Chango', serif;
-    font-style: normal;
-    font-weight: normal;
+#category{
     font-size: 16px;
-    padding: 5px;
 }
-.game{
-    margin-top: 2%;
-    width: 79%;
-    float : left;
-    display: inline-block;
-    overflow: hidden;
-}
-.players{
-    margin-top: 2%;
-    width: 20%;
-    float : left;
-    display: inline-block;
-    overflow: hidden;
-}
-.container-game-header{
+.container3{
+    margin: 25% auto 0% auto;
     text-align: center;
     font-family: 'Chango', serif;
     font-style: normal;
@@ -57,32 +52,14 @@ html{
     background: #FFAF36;
     border: 7px solid #000000;
     border-radius: 20px;
+    overflow: hidden;
 }
-.container-game-players{
-    width: 95%;
-    float : left;
-    display: inline-block;
-    text-align: center;
-    font-family: 'Chango', serif;
-    font-style: normal;
-    font-weight: normal;
-    background: lightgray;
-    border: 5px solid #000000;
-    border-radius: 20px;
+.container3:hover{
+    background-color: gray;
+    transition: 0.5s;
+    cursor: pointer;
 }
-.cat-input{
-    margin: 1% 0% 1% 0%;
-    width: 95%;
-    padding-left: 1%;
-    font-family: 'Chango', serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    background: lightgray;
-    border: 5px solid #000000;
-    border-radius: 20px;
-}
-.container-letter{
+.container-category{
     margin-top: 1%;
     font-family: 'Chango', serif;
     font-style: normal;
@@ -94,9 +71,12 @@ html{
     display: flex;
     justify-content: space-between;
 }
-#letter{
+#player{
     text-align: left;
 }
-#numberofrounds{
+#answer{
+    text-align: center;
+}
+#sel-points{
     text-align: right;
 }

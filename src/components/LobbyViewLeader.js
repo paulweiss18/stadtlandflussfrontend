@@ -69,7 +69,7 @@ class LobbyViewLeader extends Component{
             })
 
         }else if(data.type === 'startGame'){
-            window['socket'] = this.websocket;
+            window['websocket'] = this.websocket;
             this.props.history.push('/Playground', {
                 round: data.data,
                 lobbyObj: this.state.lobbyObj
@@ -140,7 +140,7 @@ class LobbyViewLeader extends Component{
                             <p className="header-cat">Categories</p>
                             <input className="container-cat"   onChange={this.handleChangeCategories} value={this.state.categories}/>
                             <p className="header-cat">Number of Rounds</p>
-                            <input className="container-cat"   onChange={this.handleChangeNumberOfRounds} value={this.state.numberOfRounds}/>
+                            <input className="container-cat" type="number" onChange={this.handleChangeNumberOfRounds} value={this.state.numberOfRounds}/>
                             <button className="save-config" onClick={() => {
                                 this.saveConfig()
                             }}>Save Configuration</button>

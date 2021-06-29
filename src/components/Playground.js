@@ -2,6 +2,7 @@
 import {CustomWebsocket} from "../context/CustomWebsocket";
 import React, {Component}  from 'react';
 import './Playground.css';
+import GameService from "../services/GameService";
 
 class Playground extends Component{
 
@@ -16,14 +17,58 @@ class Playground extends Component{
             gamePlayObj: this.props.history.location.state.round,
             currentRound: (this.props.history.location.state.round.currentRound+1),
             currentLetter: this.props.history.location.state.round.currentLetter,
-            lobbyObj: this.props.history.location.state.lobbyObj
+            lobbyObj: this.props.history.location.state.lobbyObj,
+            answers: []
         };
+
+        this.handleMessageWebsocket = this.handleMessageWebsocket.bind(this);
+
+        try {
+            this.websocket.onReceiveMessage = this.handleMessageWebsocket;
+            window.addEventListener('beforeunload', () => this.websocket.disconnect());
+        }catch (Exception){
+            this.websocket = CustomWebsocket(window.sessionStorage.getItem("playerId"));
+            this.websocket.onReceiveMessage = this.handleMessageWebsocket;
+            window.addEventListener('beforeunload', () => this.websocket.disconnect());
+        }
+    }
+
+    handleChange(e, index){
+        this.state.answers[index] = e.target.value;
+        this.setState({
+            answers: this.state.answers
+        })
+    }
+
+    finishRound(){
+        GameService.finishRound(window.sessionStorage.getItem('playerId'), this.state.lobbyObj.lobbyCode, this.state.answers);
+    }
+
+
+    handleMessageWebsocket = (e) => {
+        let data = JSON.parse(e.data);
+
+        if(data.type === 'finishRound'){
+            GameService.finishRound(window.sessionStorage.getItem('playerId'), this.state.lobbyObj.lobbyCode, this.state.answers);
+        }else if(data.type === 'lastFinished'){
+            window['websocket'] = this.websocket;
+            if(data.data.lobbyLeaderPlayer.userid === window.sessionStorage.getItem('playerId')){
+
+                this.props.history.push('/VotingScreenLeader', {
+                    lobbyObj: data.data
+                })
+            }else{
+                this.props.history.push('/VotingScreenPlayer', {
+                    lobbyObj: data.data
+                })
+            }
+        }
 
     }
 
 
     render() {
-        const list = (this.state.lobbyObj.players).map((p) => <p key={p.userid}>{p.username}</p>);
+        const list = (this.state.lobbyObj.players).map((p) => <p key={p.userid}>{p.username}: {p.score}</p>);
 
         return (
             <div className="main-game">
@@ -34,13 +79,18 @@ class Playground extends Component{
                 <div className="container-letter">
                     <p id="letter">Letter: {this.state.currentLetter}</p><p id="numberofrounds">Round: {this.state.currentRound}/{this.state.lobbyObj.gameConfiguration.numberOfRounds}</p>
                 </div>
+
                 <div className="game">
-                    <p className="category">placeholder-Category1</p>
-                    <input className="cat-input" placeholder={this.state.currentLetter + "..."}/>
-                    <p className="category">placeholder-Category2</p>
-                    <input className="cat-input" placeholder={this.state.currentLetter + "..."}/>
-                    <p className="category">placeholder-Category3</p>
-                    <input className="cat-input" placeholder={this.state.currentLetter + "..."}/>
+                    {
+                        this.state.lobbyObj.gameConfiguration.categories.map((e, index) => {
+                            return (
+                                <div key={index}>
+                                    <p className="category">{e}</p>
+                                    <input className="cat-input" onChange={(e)=>this.handleChange(e, index)} placeholder={this.state.currentLetter + "..."}/>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
                 <div className="players">
                     <p className="header-cat">Players</p>
@@ -49,13 +99,12 @@ class Playground extends Component{
                     </div>
                 </div>
                 <div className="container3" onClick={() => {
-                    //this.finishRound()
+                    this.finishRound()
                 }}>
                     <p className="btnText">Finish</p>
                 </div>
             </div>
         );
-
     }
 
 }

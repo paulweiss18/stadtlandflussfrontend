@@ -11,6 +11,9 @@ import Startpage from "./components/Startpage";
 import Lobby from "./components/Lobby";
 import LobbyViewLeader from "./components/LobbyViewLeader";
 import Playground from "./components/Playground";
+import VotingScreenLeader from "./components/VotingScreenLeader";
+import VotingScreenPlayer from "./components/VotingScreenPlayer";
+import FinalPage from "./components/FinalPage";
 
 function App() {
   return (
@@ -24,7 +27,10 @@ function App() {
                       <Route path="/JoinLobby" component={JoinLobby}></Route>
                       <Route path="/Lobby" component={Lobby}></Route>
                       <Route path="/LobbyViewLeader" component={LobbyViewLeader}></Route>
-                      <Route path="/Playground" component={Playground}></Route>
+                      <Route path="/Playground" component={Playground}>
+                      </Route><Route path="/VotingScreenLeader" component={VotingScreenLeader}></Route>
+                      <Route path="/VotingScreenPlayer" component={VotingScreenPlayer}></Route>
+                      <Route path="/FinalPage" component={FinalPage}></Route>
                   </Switch>
               </div>
           </Router>

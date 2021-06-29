@@ -57,7 +57,8 @@ class Lobby extends Component{
                 lobbyObj: data.data
             })
         }else if(data.type === 'startGame'){
-            window['socket'] = this.websocket;
+            window['websocket'] = this.websocket;
+
             this.props.history.push('/Playground', {
                 round: data.data,
                 lobbyObj: this.state.lobbyObj
