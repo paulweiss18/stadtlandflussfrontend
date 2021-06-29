@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const LOBBY_API_BASE_URL = "http://localhost:8090/game";
+const LOBBY_API_BASE_URL = "http://10.0.0.25:8090/game";
 
 class GameService{
 

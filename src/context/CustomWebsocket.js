@@ -1,5 +1,5 @@
 
-const DEFAULT_URL = 'ws://localhost:8090/stadtlandfluss'
+const DEFAULT_URL = 'ws://10.0.0.25:8090/stadtlandfluss'
 
 export class CustomWebsocket{
 
@@ -49,7 +49,6 @@ export class CustomWebsocket{
     }
 
     disconnect = (Event) =>{
-        console.log("asdf");
         this.webSocket.send(
             JSON.stringify({
                 type: "connection_closed",

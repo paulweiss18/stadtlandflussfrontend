@@ -6,6 +6,7 @@ import LobbyService from "../services/LobbyService";
 class VotingScreenLeader extends Component{
 
     pointMap = new Map();
+    pointMapCurrentRound = new Map();
     websocket: CustomWebsocket;
 
     constructor(props) {
@@ -13,12 +14,16 @@ class VotingScreenLeader extends Component{
 
         this.props.history.location.state.lobbyObj.players.map((p) => {
             this.pointMap.set(p.userid, parseInt(p.score));
+            var points = [];
+            this.pointMapCurrentRound.set(p.userid, points)
+            this.props.history.location.state.lobbyObj.gameConfiguration.categories.map((c, index) => {
+                this.pointMapCurrentRound.get(p.userid)[index] = 0;
+            })
         });
 
         this.state = {
             lobbyObj: this.props.history.location.state.lobbyObj,
         }
-
         this.websocket = window['websocket'];
 
         this.handleMessageWebsocket = this.handleMessageWebsocket.bind(this);
@@ -44,20 +49,29 @@ class VotingScreenLeader extends Component{
         }
     }
 
-    handleChangePoints(e, playerid){
-        this.pointMap.set(playerid, parseInt(this.pointMap.get(playerid)) + parseInt(e.target.value))
+    handleChangePoints(e, playerid, index){
+        this.pointMapCurrentRound.get(playerid)[index] = e.target.value;
     }
 
     submitPoints(){
+        for (const [key, value] of this.pointMapCurrentRound.entries()) {
+            let count = 0;
+            for(let i in value){
+                count = count + parseInt(value[i])
+
+            }
+
+            this.pointMap.set(key, this.pointMap.get(key)+count);
+        }
+        console.log(this.pointMap)
+
         for (const [key, value] of this.pointMap.entries()) {
-            console.log(value);
             GameService.votePlayer(key, value.toString());
         }
         GameService.nextRound(this.state.lobbyObj.lobbyCode)
     }
 
     render(){
-
         let myMap = new Map(Object.entries(this.state.lobbyObj.gamePlay.rounds[this.state.lobbyObj.gamePlay.currentRound].answers));
 
         const list = (this.state.lobbyObj.gameConfiguration.categories).map((c, index) =>
@@ -73,7 +87,7 @@ class VotingScreenLeader extends Component{
                                     <p id="answer2">{myMap.get(p.userid)[index]}</p>
                                 </div>
                                 <div id="right2">
-                                    <select id="sel-points" onChange={e => this.handleChangePoints(e, p.userid)}><option value="0">0</option><option value="5">5</option><option value="10">10</option></select>
+                                    <select id="sel-points" onChange={e => this.handleChangePoints(e, p.userid, index)}><option value="0">0</option><option value="5">5</option><option value="10">10</option></select>
                                 </div>
                             </div>
                     )}

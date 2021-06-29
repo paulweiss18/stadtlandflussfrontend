@@ -23,6 +23,10 @@ class FinalPage extends Component{
                 <div className="container5">
                     {list}
                 </div>
+                <br/>
+                <div className="container5" onClick={() => {this.props.history.push("/Startpage")}} >
+                    <p>Back to Menu</p>
+                </div>
             </div>
         );
     }
